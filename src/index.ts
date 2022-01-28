@@ -4,6 +4,14 @@ import * as RPC from "discord-rpc";
 
 const path = app.getPath("userData");
 
+if (!fse.existsSync(path + "\\presences.json")) {
+    fse.copySync(`${__dirname}/data/presences.json`, path + `\\presences.json`);
+}
+
+if (!fse.existsSync(path + "\\data\\id.json")) {
+    fse.copySync(`${__dirname}/data/id.json`, path + `\\id.json`);
+}
+
 let ClientData = require(path + "\\id.json");
 
 setInterval(() => {
@@ -33,14 +41,6 @@ app.on("ready", () => {
             contextIsolation: false,
         },
     });
-
-    if (!fse.existsSync(path + "\\presences.json")) {
-        fse.copySync(`${__dirname}/data/presences.json`, path + `\\presences.json`);
-    }
-
-    if (!fse.existsSync(path + "\\data\\id.json")) {
-        fse.copySync(`${__dirname}/data/id.json`, path + `\\id.json`);
-    }
 
     mainWindow.loadFile(`./views/index.html`);
 });
