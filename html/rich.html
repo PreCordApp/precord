@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>PreCord</title>
+
+        <link rel="stylesheet" href="css/style.css" />
+
+        <script src="js/jquery.js" defer></script>
+        <script src="js/addPresence.js" defer></script>
+    </head>
+    <body>
+        <div class="titleBar"></div>
+        <div class="body-bg"></div>
+        <div class="panel">
+            <div class="panel-bg"></div>
+
+            <div class="panel-content">
+                <h1><img src="images/icon.png" style="vertical-align: middle; margin-right: 10px" width="35px" />PreCord</h1>
+                <h2>SETUP</h2>
+                <hr></hr>
+                <a href="setId.html" panel-btn>Set Application ID</a>
+                <h2>PRESENCES</h2>
+                <hr></hr>
+                <a href="rich.html" selected panel-btn>Add Presence</a>
+                <a href="edit.html" panel-btn>Edit Presence</a>
+                <a href="turn-on.html" panel-btn>Turn on Presence</a>
+                <a href="select.html" panel-btn>Select Presence</a>
+                <h2>OTHER</h2>
+                <hr></hr>
+                <a href="about-us.html" panel-btn>About Us</a>
+                <a href="index.html" panel-btn>Home</a>
+            </div>
+        </div>
+
+        <div class="other-side">
+            <div style="opacity: 0;" added><h1>Rich Presence Added!</h1></div>
+            <form id="add-rich">
+                <label>Profile Name *</label>
+                <input required name="name" field><br><br>
+
+                <label>Details *</label>
+                <input required name="details" field><br><br>
+
+                <label>State</label>
+                <input name="state" field><br><br>
+
+                <label>Large Image URL</label>
+                <input name="large_image" field><br><br>
+
+                <label>Large Image Text</label>
+                <input name="large_text" field><br><br>
+
+                <label>Small Image URL</label>
+                <input name="small_image" field><br><br>
+
+                <label>Small Image Text</label>
+                <input name="small_text" field><br><br>
+
+                <label>Timestamp?</label>
+                <select name="timestamp" field>
+                    <option value="true" selected>YES</option>
+                    <option value="false">NO</option>
+                </select><br><br>
+
+                <button type="submit" btn>SAVE</button><br><br>
+            </form>
+        </div>
+    </body>
+</html>
