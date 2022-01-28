@@ -7,10 +7,9 @@
         <title>PreCord</title>
 
         <link rel="stylesheet" href="css/style.css" />
+        <script>var exports = {};</script>
 
-        <script src="js/jquery.js" defer></script>
-        <script src="js/setId.js" defer></script>
-        <script src="js/link.js" defer></script>
+        <script src="../comp/renderer/turnOn.js" defer></script>
     </head>
     <body>
         <div class="titleBar"></div>
@@ -25,9 +24,9 @@
                 <a href="setId.html" panel-btn>Set Application ID</a>
                 <h2>PRESENCES</h2>
                 <hr></hr>
-                <a href="rich.html" selected panel-btn>Add Presence</a>
+                <a href="rich.html" panel-btn>Add Presence</a>
                 <a href="edit.html" panel-btn>Edit Presence</a>
-                <a href="turn-on.html" panel-btn>Turn on Presence</a>
+                <a href="turn-on.html" selected panel-btn>Turn on Presence</a>
                 <a href="select.html" panel-btn>Select Presence</a>
                 <h2>OTHER</h2>
                 <hr></hr>
@@ -37,14 +36,8 @@
         </div>
 
         <div class="other-side">
-            <div style="opacity: 0;" added><h1>Application ID Set!</h1></div>
-            <form id="set-id">
-                <label>Application ID *</label>
-                <input required name="id" field><br><br>
-
-                <h3 style="color: grey; margin-top: -10px;">You can find/create an applicaton by <a onclick="link('https://discord.com/developers/applications/')" link>clicking here</a></h3>
-                <button style="margin-top: -20px;" type="submit" btn>SAVE</button><br><br>
-            </form>
+            <div style="opacity: 0;" added><h1>Rich Presence Set!</h1></div>
+            <button type="submit" onclick="turnOn()" btn>TURN ON PRESENCE</button><br><br>
         </div>
     </body>
 </html>

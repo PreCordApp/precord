@@ -1,8 +1,8 @@
-const fs = require("fs-extra");
-const { ipcRenderer } = require("electron");
-let path;
-let presences;
-let selected;
+import * as fs from "fs-extra";
+import { ipcRenderer } from "electron";
+let path: string;
+let presences: any;
+let selected: String | null;
 
 (async () => {
     path = await ipcRenderer.invoke("getPath");
@@ -39,10 +39,13 @@ form.addEventListener("submit", async e => {
         largeImageText: element.largeImageKey.value || null,
         smallImageKey: element.smallImageKey.value || null,
         smallImageText: element.smallImageKey.value || null,
+        startTimestamp: Date.now() || null,
     };
 
     if (element.timestamp.value === "true") {
         preObj.startTimestamp = Date.now();
+    } else {
+        preObj.startTimestamp = null;
     }
 
     Object.keys(preObj).forEach(key => {

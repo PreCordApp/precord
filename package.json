@@ -2,9 +2,11 @@
     "name": "precord",
     "version": "0.0.1",
     "description": "PreCord is a custom rich presence app",
-    "main": "index.js",
+    "main": "./comp/index.js",
     "scripts": {
-        "start": "electron .",
+        "build": "tsc",
+        "start": "npm run build && electron .",
+        "start2": "electron .",
         "pack": "electron-builder --dir",
         "dist": "electron-builder"
     },

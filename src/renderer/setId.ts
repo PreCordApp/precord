@@ -1,26 +1,29 @@
-const fs = require("fs-extra");
-const { ipcRenderer } = require("electron");
-let path;
-let clientId;
+import * as fs from "fs-extra";
+import { ipcRenderer } from "electron";
+let path: string;
+let clientId: any;
 
 const select = document.getElementsByName("select")[0];
 
 (async () => {
     path = await ipcRenderer.invoke("getPath");
     clientId = require(path + "\\id.json");
+    console.log(path + "\\id.json");
 
-    const input = document.getElementsByName("id")[0];
+    const input = document.getElementsByName("setId")[0] as HTMLInputElement;
 
     input.value = clientId.clientId;
 })();
 
 const query = selector => document.querySelector(selector);
-const form = document.querySelector("#set-id");
+const form = document.querySelector("#set-id") as HTMLFormElement;
 
 form.addEventListener("submit", e => {
     e.preventDefault();
-    console.log(e.target.id.value);
-    clientId.clientId = e.target.id.value;
+    const el = e.target as HTMLFormElement;
+
+    console.log(el.setId.value);
+    clientId.clientId = el.setId.value;
     fs.writeJSONSync(path + "\\id.json", clientId);
 
     const popup = query("*[added]");

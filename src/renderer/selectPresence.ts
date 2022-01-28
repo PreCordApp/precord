@@ -1,7 +1,6 @@
-const fs = require("fs-extra");
-const { ipcRenderer } = require("electron");
-let path;
-let presences;
+import { ipcRenderer } from "electron";
+let path: string;
+let presences: any;
 
 const select = document.getElementsByName("select")[0];
 
@@ -15,11 +14,12 @@ const select = document.getElementsByName("select")[0];
 })();
 
 const query = selector => document.querySelector(selector);
-const form = document.querySelector("#select-rich");
+const form = document.querySelector("#select-rich") as HTMLFormElement;
 
 form.addEventListener("submit", e => {
     e.preventDefault();
-    ipcRenderer.invoke("select", e.target.select.value);
+    const el = e.target as HTMLFormElement;
+    ipcRenderer.invoke("select", el.select.value);
 
     window.location.href = "index.html";
 });

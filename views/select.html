@@ -7,8 +7,9 @@
         <title>PreCord</title>
 
         <link rel="stylesheet" href="css/style.css" />
+        <script>var exports = {};</script>
 
-        <script src="js/jquery.js" defer></script>
+        <script src="../comp/renderer/selectPresence.js" defer></script>
     </head>
     <body>
         <div class="titleBar"></div>
@@ -26,16 +27,23 @@
                 <a href="rich.html" panel-btn>Add Presence</a>
                 <a href="edit.html" panel-btn>Edit Presence</a>
                 <a href="turn-on.html" panel-btn>Turn on Presence</a>
-                <a href="select.html" panel-btn>Select Presence</a>
+                <a href="select.html" selected panel-btn>Select Presence</a>
                 <h2>OTHER</h2>
                 <hr></hr>
-                <a href="about-us.html" selected panel-btn>About Us</a>
+                <a href="about-us.html" panel-btn>About Us</a>
                 <a href="index.html" panel-btn>Home</a>
             </div>
         </div>
 
         <div class="other-side">
-            <h2>PreCord was made by koki1019#1019. This Project was made for fun.<br>This project is open source so if you want to modify it just go to home page and click REDIRECT button</h2>
+            <form id="select-rich">
+                <label>Choose Presence</label>
+                <select name="select" field>
+                    
+                </select><br><br>
+
+                <button type="submit" btn>SELECT</button><br><br>
+            </form>
         </div>
     </body>
 </html>

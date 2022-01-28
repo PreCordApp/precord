@@ -1,8 +1,8 @@
-const fs = require("fs-extra");
-const { ipcRenderer } = require("electron");
-let path;
-let presences;
-let isTurnedOn;
+import * as fs from "fs-extra";
+import { ipcRenderer } from "electron";
+let path: string;
+let presences: any;
+let isTurnedOn: boolean;
 
 (async () => {
     path = await ipcRenderer.invoke("getPath");
@@ -14,6 +14,6 @@ let isTurnedOn;
     }, 3000);
 })();
 
-function turnOn() {
+function turnOn(): void {
     ipcRenderer.invoke("run", presences);
 }

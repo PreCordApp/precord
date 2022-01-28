@@ -7,9 +7,9 @@
         <title>PreCord</title>
 
         <link rel="stylesheet" href="css/style.css" />
+        <script>var exports = {};</script>
 
-        <script src="js/jquery.js" defer></script>
-        <script src="js/editPresence.js" defer></script>
+        <script src="../comp/renderer/addPresence.js" defer></script>
     </head>
     <body>
         <div class="titleBar"></div>
@@ -24,8 +24,8 @@
                 <a href="setId.html" panel-btn>Set Application ID</a>
                 <h2>PRESENCES</h2>
                 <hr></hr>
-                <a href="rich.html" panel-btn>Add Presence</a>
-                <a href="edit.html" selected panel-btn>Edit Presence</a>
+                <a href="rich.html" selected panel-btn>Add Presence</a>
+                <a href="edit.html" panel-btn>Edit Presence</a>
                 <a href="turn-on.html" panel-btn>Turn on Presence</a>
                 <a href="select.html" panel-btn>Select Presence</a>
                 <h2>OTHER</h2>
@@ -36,8 +36,8 @@
         </div>
 
         <div class="other-side">
-            <div style="opacity: 0;" added><h1>Rich Presence Edited!</h1></div>
-            <form id="edit-rich">
+            <div style="opacity: 0;" added><h1>Rich Presence Added!</h1></div>
+            <form id="add-rich">
                 <label>Profile Name *</label>
                 <input required name="nameId" field><br><br>
 
@@ -48,16 +48,16 @@
                 <input name="state" field><br><br>
 
                 <label>Large Image URL</label>
-                <input name="largeImageKey" field><br><br>
+                <input name="large_image" field><br><br>
 
                 <label>Large Image Text</label>
-                <input name="largeImageText" field><br><br>
+                <input name="large_text" field><br><br>
 
                 <label>Small Image URL</label>
-                <input name="smallImageKey" field><br><br>
+                <input name="small_image" field><br><br>
 
                 <label>Small Image Text</label>
-                <input name="smallImageText" field><br><br>
+                <input name="small_text" field><br><br>
 
                 <label>Timestamp?</label>
                 <select name="timestamp" field>

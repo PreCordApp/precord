@@ -1,8 +1,8 @@
-const { app, BrowserWindow, ipcMain } = require("electron");
-const fse = require("fs-extra");
+import { app, BrowserWindow, ipcMain, Notification } from "electron";
+import * as fse from "fs-extra";
+import * as RPC from "discord-rpc";
 
 const path = app.getPath("userData");
-const RPC = require("discord-rpc");
 
 let ClientData = require(path + "\\id.json");
 
@@ -14,7 +14,7 @@ const client = new RPC.Client({ transport: "ipc" });
 client.login({ clientId: ClientData.clientId || "874351422559363103" });
 const Presences = require(path + "\\presences.json");
 
-let mainWindow: typeof BrowserWindow;
+let mainWindow: BrowserWindow;
 let PresenceID: String;
 
 let isTurnedOn: Boolean;
@@ -22,7 +22,7 @@ let isTurnedOn: Boolean;
 app.on("ready", () => {
     let mainWindow = new BrowserWindow({
         autoHideMenuBar: true,
-        icon: "./html/images/icon.png",
+        icon: `${__dirname}/views/images/icon.png`,
         maxWidth: 1200,
         maxHeight: 800,
         minWidth: 1200,
@@ -35,14 +35,14 @@ app.on("ready", () => {
     });
 
     if (!fse.existsSync(path + "\\presences.json")) {
-        fse.copySync(__dirname + "\\presences.json", path + "\\presences.json");
+        fse.copySync(`${__dirname}/data/presences.json`, path + `\\presences.json`);
     }
 
-    if (!fse.existsSync(path + "\\id.json")) {
-        fse.copySync(__dirname + "\\id.json", path + "\\id.json");
+    if (!fse.existsSync(path + "\\data\\id.json")) {
+        fse.copySync(`${__dirname}/data/id.json`, path + `\\id.json`);
     }
 
-    mainWindow.loadFile("./html/index.html");
+    mainWindow.loadFile(`./views/index.html`);
 });
 
 ipcMain.handle("getPath", e => {
@@ -58,7 +58,7 @@ ipcMain.handle("turnedOn", (e: any) => {
 });
 
 ipcMain.handle("run", (e: any, presences: any) => {
-    const presence = presences.find(x => x.nameId === PresenceID);
+    const presence = presences.find((x: { nameId: String }) => x.nameId === PresenceID);
     if (!presence) return;
     presence.startTimestamp = Date.now();
     client.setActivity(presence, process.pid);
