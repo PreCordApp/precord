@@ -33,7 +33,3 @@ form.addEventListener("submit", e => {
         popup.style.animationDuration = "";
     }, 5000);
 });
-
-function link(link) {
-    require("electron").shell.openExternal(link);
-}
